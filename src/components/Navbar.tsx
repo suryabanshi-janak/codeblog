@@ -30,7 +30,7 @@ export default function Navbar() {
       <div className='flex items space-x-3'>
         {SOCIAL_LINKS.map(({ href, icon: Icon }) => (
           <a key={href} href={href} target='_blank' rel='noopener noreferrer'>
-            <Icon className='w-6 h-6 hover:scale-105 transition-all ease duration-200' />
+            <Icon className='w-6 h-6 hover:scale-125 transition-all ease duration-200' />
           </a>
         ))}
       </div>

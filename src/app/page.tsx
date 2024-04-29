@@ -1,3 +1,6 @@
+import { allBlogs } from 'contentlayer/generated';
+
 export default function Home() {
-  return <main></main>;
+  console.log(allBlogs);
+  return <main>home</main>;
 }
