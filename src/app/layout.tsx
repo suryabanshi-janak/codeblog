@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
 import { Inter, Manrope } from 'next/font/google';
 import './globals.css';
-import { cn } from '@/lib/utils';
+
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import { cn } from '@/lib/utils';
 
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
 });
+
 const manrope = Manrope({
   subsets: ['latin'],
   display: 'swap',
@@ -36,6 +39,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

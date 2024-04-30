@@ -3,15 +3,16 @@ import {
   defineDocumentType,
   type ComputedFields,
 } from '@contentlayer/source-files';
+import readingTime from 'reading-time';
 
 const computedFields: ComputedFields = {
-  slug: {
+  url: {
     type: 'string',
-    resolve: (doc) => `/${doc._raw.flattenedPath}`,
+    resolve: (doc) => `/blogs/${doc._raw.flattenedPath}`,
   },
-  slugAsParams: {
-    type: 'string',
-    resolve: (doc) => doc._raw.flattenedPath.split('/').slice(1).join('/'),
+  readingTime: {
+    type: 'json',
+    resolve: (doc) => readingTime(doc.body.raw),
   },
 };
 
@@ -36,7 +37,7 @@ const Blog = defineDocumentType(() => ({
       type: 'string',
       required: true,
     },
-    image: { type: 'string', required: true },
+    image: { type: 'image', required: true },
     isPublished: {
       type: 'boolean',
       default: true,
@@ -48,6 +49,7 @@ const Blog = defineDocumentType(() => ({
     tags: {
       type: 'list',
       of: { type: 'string' },
+      required: true,
     },
   },
   computedFields,

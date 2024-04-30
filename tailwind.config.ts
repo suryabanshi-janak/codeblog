@@ -19,6 +19,10 @@ const config: Config = {
         inter: ['var(--font-inter)'],
         manrope: ['var(--font-manrope)'],
       },
+      screens: {
+        sxl: '1180px', // @media (min-width: 1180px){...}
+        xs: '480px', // @media (min-width: 480px){...}
+      },
     },
   },
   plugins: [],

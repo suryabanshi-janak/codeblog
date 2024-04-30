@@ -1,16 +1,10 @@
 import Link from 'next/link';
 import { Icons } from './Icons';
-
-const SOCIAL_LINKS = [
-  { href: 'https://linkedin.com', icon: Icons.linkedin },
-  { href: 'https://twitter.com', icon: Icons.twitter },
-  { href: 'https://github.com', icon: Icons.github },
-  { href: 'https://dribbble.com', icon: Icons.dribble },
-];
+import { SOCIAL_LINKS } from '@/lib/constants.';
 
 export default function Navbar() {
   return (
-    <header className='flex items-center justify-between h-20 px-5 sm:px-10 w-full'>
+    <header className='flex items-center justify-between h-24 px-5 sm:px-10 w-full'>
       <Link
         href='/'
         className='font-semibold text-lg md:text-xl tracking-tight'
@@ -18,7 +12,10 @@ export default function Navbar() {
         CodeBlog
       </Link>
 
-      <nav className='flex items-center space-x-4 border border-dark rounded-full capitalize font-medium w-max px-8 py-3 fixed right-1/2 translate-x-1/2 top-6'>
+      <nav
+        className='w-max py-3 px-8 gap-x-4 border border-dark rounded-full font-medium capitalize items-center hidden sm:flex
+        fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50'
+      >
         <Link href=''>Home</Link>
         <Link href='/about'>About</Link>
         <Link href='/contact'>Contact</Link>
