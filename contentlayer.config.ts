@@ -10,6 +10,10 @@ const computedFields: ComputedFields = {
     type: 'string',
     resolve: (doc) => `/blogs/${doc._raw.flattenedPath}`,
   },
+  slug: {
+    type: 'string',
+    resolve: (doc) => doc._raw.flattenedPath,
+  },
   readingTime: {
     type: 'json',
     resolve: (doc) => readingTime(doc.body.raw),
