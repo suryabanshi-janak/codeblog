@@ -9,6 +9,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import { Pluggable } from 'unified';
+import GithubSlugger from 'github-slugger';
 
 const computedFields: ComputedFields = {
   url: {
@@ -22,6 +23,28 @@ const computedFields: ComputedFields = {
   readingTime: {
     type: 'json',
     resolve: (doc) => readingTime(doc.body.raw),
+  },
+  toc: {
+    type: 'json',
+    resolve: async (doc) => {
+      const regulrExp = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
+      const slugger = new GithubSlugger();
+      const headings = Array.from(doc.body.raw.matchAll(regulrExp)).map(
+        ({ groups }: any) => {
+          const flag = groups?.flag;
+          const content = groups?.content;
+
+          return {
+            level:
+              flag?.length == 1 ? 'one' : flag?.length == 2 ? 'two' : 'three',
+            text: content,
+            slug: content ? slugger.slug(content) : undefined,
+          };
+        }
+      );
+
+      return headings;
+    },
   },
 };
 

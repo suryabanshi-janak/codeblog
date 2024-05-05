@@ -6,6 +6,7 @@ import { slug } from 'github-slugger';
 import Tag from '@/components/Tag';
 import { allBlogs } from 'contentlayer/generated';
 import RenderMDX from '@/components/RenderMDX';
+import TOC from '@/components/TOC';
 
 export default function BlogPage({ params }: { params: { slug: string } }) {
   const blog = allBlogs.find((blog) => blog.slug === params.slug);
@@ -52,7 +53,7 @@ export default function BlogPage({ params }: { params: { slug: string } }) {
       </div>
 
       <div className='grid grid-cols-12  gap-y-8 lg:gap-8 sxl:gap-16 mt-8 px-5 md:px-10'>
-        <div className='col-span-12  lg:col-span-4'>TOC</div>
+        <TOC toc={blog.toc} />
         <RenderMDX blog={blog} />
       </div>
     </>
