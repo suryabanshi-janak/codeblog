@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@dotlottie/react-player": "^1.6.19",
     "clsx": "^2.1.1",
     "contentlayer": "^0.3.4",
     "date-fns": "^3.6.0",
