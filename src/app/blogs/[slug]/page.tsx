@@ -7,6 +7,7 @@ import Tag from '@/components/Tag';
 import { allBlogs } from 'contentlayer/generated';
 import RenderMDX from '@/components/RenderMDX';
 import TOC from '@/components/TOC';
+import ViewCounter from '@/components/ViewCounter';
 
 export default function BlogPage({ params }: { params: { slug: string } }) {
   const blog = allBlogs.find((blog) => blog.slug === params.slug);
@@ -45,7 +46,9 @@ export default function BlogPage({ params }: { params: { slug: string } }) {
         <time className='m-3'>
           {format(parseISO(blog.publishedAt), 'LLLL d, yyyy')}
         </time>
-        <span className='m-3'>20 views</span>
+        <span className='m-3'>
+          <ViewCounter slug={params.slug} />
+        </span>
         <div className='m-3'>{blog.readingTime.text}</div>
         <Link href={`/categories/${slug(blog.tags[0])}`} className='m-3'>
           #{blog.tags[0]}
