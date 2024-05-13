@@ -19,6 +19,11 @@ const SKILLS = [
   'sanity',
 ];
 
+export const metadata = {
+  title: 'About Me',
+  description: `Here are some details about my self.`,
+};
+
 export default function AboutPage() {
   return (
     <div>

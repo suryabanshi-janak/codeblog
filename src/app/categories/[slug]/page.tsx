@@ -4,6 +4,19 @@ import { allBlogs } from 'contentlayer/generated';
 import { slug } from 'github-slugger';
 import Link from 'next/link';
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  return {
+    title: `${params.slug.replaceAll('-', ' ')} Blogs`,
+    description: `Learn more about ${
+      params.slug === 'all' ? 'web development' : params.slug
+    } through our collection of expert blogs and tutorials`,
+  };
+}
+
 export default function Categories({ params }: { params: { slug: string } }) {
   const categories = ['all'];
   allBlogs.forEach((blog) => {
